@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ify LiveTv</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    #myVideo {
+      width: 70%;
+      height: 60%;
+      background-color: rgb(0, 0, 0);
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>Ify LiveTv</h1>
+  <video id="myVideo" controls autoplay></video>
+  <script>
+    var video = document.getElementById('myVideo');
+
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource('http://bd.jagobd.com:1931/live-orgin/deshebideshe.stream/chunks.m3u8');
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, function() {
+        video.play();
+      });
+    }
+  </script>
+</body>
+</html>
